@@ -5,8 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:static": "NEXT_EXPORT=true next build",
     "build:cf": "opennextjs-cloudflare build",
     "preview:cf": "opennextjs-cloudflare preview",
+    "deploy:tcb": "NEXT_EXPORT=true next build && tcb hosting deploy out -e $TCB_ENV_ID",
     "start": "next start",
     "lint": "next lint"
   },
