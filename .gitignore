@@ -1,6 +1,7 @@
 .baidu-cc
 /node_modules
 /.next/
+/.open-next/
 /out/
 /build
 .DS_Store
