@@ -47,8 +47,5 @@ export const weddingConfig = {
     appId: '',
   },
 
-  // ─── CloudBase ───
-  cloudbase: {
-    envId: '', // 腾讯云 CloudBase 环境 ID，例如 'wedding-xxx'
-  },
+
 } as const;

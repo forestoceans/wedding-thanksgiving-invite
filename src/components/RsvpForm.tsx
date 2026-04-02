@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, type FormEvent } from 'react';
-import { weddingConfig } from '@/config/wedding';
 
 type FormState = 'idle' | 'submitting' | 'success' | 'error';
 
@@ -18,19 +17,6 @@ export default function RsvpForm() {
     setState('submitting');
 
     try {
-      // 如果配置了 CloudBase envId，则写入数据库
-      if (weddingConfig.cloudbase.envId) {
-        const { getDb } = await import('@/lib/cloudbase');
-        const db = await getDb();
-        if (db) {
-          await db.collection('rsvp').add({
-            name: name.trim(),
-            count,
-            message: message.trim(),
-            createdAt: new Date().toISOString(),
-          });
-        }
-      }
       setState('success');
     } catch {
       console.error('RSVP submit failed');

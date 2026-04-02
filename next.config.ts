@@ -7,23 +7,6 @@ const nextConfig: NextConfig = {
   // Turbopack 空配置，消除 Next.js 16 警告
   turbopack: {},
 
-  // CloudBase JS SDK 包含 Node.js 适配器的动态 import，
-  // 需要在客户端打包时忽略这些模块（用于 build 时的 webpack）
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      config.resolve = config.resolve || {};
-      config.resolve.fallback = {
-        ...config.resolve.fallback,
-        fs: false,
-        net: false,
-        tls: false,
-        crypto: false,
-        jsonwebtoken: false,
-        '@cloudbase/signature-nodejs': false,
-      };
-    }
-    return config;
-  },
 };
 
 export default nextConfig;

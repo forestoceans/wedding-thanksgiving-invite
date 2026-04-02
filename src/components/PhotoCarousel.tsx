@@ -10,8 +10,6 @@ import { weddingConfig } from '@/config/wedding';
 export default function PhotoCarousel() {
   const photos = weddingConfig.photos;
 
-  if (photos.length === 0) return null;
-
   return (
     <section className="bg-cream py-16">
       <div className="max-w-sm mx-auto px-6 space-y-6">
