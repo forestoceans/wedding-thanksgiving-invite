@@ -2,9 +2,9 @@
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, EffectFade } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/effect-fade';
+import 'swiper/swiper.css';
+import 'swiper/modules/pagination.css';
+import 'swiper/modules/effect-fade.css';
 import { weddingConfig } from '@/config/wedding';
 
 export default function PhotoCarousel() {
