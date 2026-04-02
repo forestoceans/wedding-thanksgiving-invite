@@ -9,10 +9,10 @@ export default function PhotoCarousel() {
   const photos = weddingConfig.photos;
 
   return (
-    <section className="bg-parchment py-20">
+    <section className="bg-lacquer py-20">
       <div className="max-w-xs mx-auto px-6 space-y-8">
 
-        <p className="ds-sub text-ink-ghost tracking-[0.55em] text-center">甜 蜜 瞬 间</p>
+        <p className="ds-sub text-gold-muted/85 tracking-[0.55em] text-center">甜 蜜 瞬 间</p>
 
         {/* 相框 */}
         <div className="relative mx-auto">
@@ -42,7 +42,7 @@ export default function PhotoCarousel() {
           </div>
         </div>
 
-        <p className="ds-en-sm text-ink-ghost/50 tracking-[0.25em] text-center italic">
+        <p className="ds-en-sm text-gold-muted/60 tracking-[0.25em] text-center italic">
           Love is the greatest adventure
         </p>
       </div>

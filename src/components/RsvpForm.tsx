@@ -38,56 +38,56 @@ export default function RsvpForm() {
       <div className="max-w-xs mx-auto space-y-10">
 
         <div className="text-center space-y-3">
-          <p className="ds-sub text-gold-muted/65 tracking-[0.55em]">出 席 回 执</p>
-          <p className="ds-cap text-gold-pale/30 tracking-[0.15em]">请告知您的出席信息</p>
+          <p className="ds-sub text-gold-muted/90 tracking-[0.55em]">出 席 回 执</p>
+          <p className="ds-cap text-gold-pale/60 tracking-[0.15em]">请告知您的出席信息</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
 
           {/* 姓名 */}
           <div className="space-y-2.5">
-            <label className="block ds-cap text-gold-muted/70 tracking-[0.3em]">姓 名</label>
+            <label className="block ds-cap text-gold-muted/90 tracking-[0.3em]">姓 名</label>
             <input
               type="text"
               required
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="请输入您的姓名"
-              className="w-full px-0 py-3 bg-transparent border-b border-gold/20 ds-body text-gold-pale/80 tracking-[0.12em] placeholder:text-gold-pale/20 focus:outline-none focus:border-gold/50 transition-colors"
+              className="w-full px-0 py-3 bg-transparent border-b border-gold/35 ds-body text-gold-pale tracking-[0.12em] placeholder:text-gold-pale/35 focus:outline-none focus:border-gold/70 transition-colors"
             />
           </div>
 
           {/* 出席人数 */}
           <div className="space-y-2.5">
-            <label className="block ds-cap text-gold-muted/70 tracking-[0.3em]">出 席 人 数</label>
-            <div className="flex items-center gap-6 border-b border-gold/20 py-3">
+            <label className="block ds-cap text-gold-muted/90 tracking-[0.3em]">出 席 人 数</label>
+            <div className="flex items-center gap-6 border-b border-gold/35 py-3">
               <button
                 type="button"
                 onClick={() => setCount(Math.max(1, count - 1))}
-                className="w-7 h-7 flex items-center justify-center border border-gold/25 text-gold/60 text-lg leading-none transition-all hover:border-gold/50 hover:text-gold active:scale-90"
+                className="w-7 h-7 flex items-center justify-center border border-gold/40 text-gold/80 text-lg leading-none transition-all hover:border-gold/70 hover:text-gold active:scale-90"
               >−</button>
-              <span className="ds-head text-gold-pale/80 w-6 text-center tabular-nums">{count}</span>
+              <span className="ds-head text-gold-pale w-6 text-center tabular-nums">{count}</span>
               <button
                 type="button"
                 onClick={() => setCount(Math.min(10, count + 1))}
-                className="w-7 h-7 flex items-center justify-center border border-gold/25 text-gold/60 text-lg leading-none transition-all hover:border-gold/50 hover:text-gold active:scale-90"
+                className="w-7 h-7 flex items-center justify-center border border-gold/40 text-gold/80 text-lg leading-none transition-all hover:border-gold/70 hover:text-gold active:scale-90"
               >+</button>
-              <span className="ds-cap text-gold-pale/30 tracking-[0.1em]">位</span>
+              <span className="ds-cap text-gold-pale/60 tracking-[0.1em]">位</span>
             </div>
           </div>
 
           {/* 祝福留言 */}
           <div className="space-y-2.5">
-            <label className="block ds-cap text-gold-muted/70 tracking-[0.3em]">
+            <label className="block ds-cap text-gold-muted/90 tracking-[0.3em]">
               祝 福 留 言
-              <span className="ml-2 text-gold-pale/20">（选填）</span>
+              <span className="ml-2 text-gold-pale/45">（选填）</span>
             </label>
             <textarea
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="写下您的祝福..."
               rows={3}
-              className="w-full px-0 py-3 bg-transparent border-b border-gold/20 ds-body text-gold-pale/80 tracking-[0.1em] placeholder:text-gold-pale/20 focus:outline-none focus:border-gold/50 transition-colors resize-none"
+              className="w-full px-0 py-3 bg-transparent border-b border-gold/35 ds-body text-gold-pale tracking-[0.1em] placeholder:text-gold-pale/35 focus:outline-none focus:border-gold/70 transition-colors resize-none"
             />
           </div>
 
@@ -96,7 +96,7 @@ export default function RsvpForm() {
             <button
               type="submit"
               disabled={state === 'submitting'}
-              className="w-full py-4 border border-gold/40 text-gold ds-sub tracking-[0.45em] transition-all hover:bg-gold/10 hover:border-gold/60 active:scale-[0.98] disabled:opacity-40"
+              className="w-full py-4 border border-gold/60 text-gold ds-sub tracking-[0.45em] transition-all hover:bg-gold/15 hover:border-gold active:scale-[0.98] disabled:opacity-40"
             >
               {state === 'submitting' ? '提 交 中 …' : '确 认 出 席'}
             </button>

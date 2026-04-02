@@ -32,13 +32,28 @@ export default function VenueSection() {
 
         {/* 双边框卡片 */}
         <div className="double-border px-7 py-9 space-y-5">
-          <p className="ds-lg text-gold-pale leading-snug tracking-[0.12em]">{c.venue.name}</p>
+          <p
+            className="text-gold-pale leading-snug"
+            style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 'clamp(1.3rem, 4.5vw, 1.5rem)',
+              letterSpacing: '0.06em',
+              wordBreak: 'keep-all',
+            }}
+          >
+            {c.venue.name}
+          </p>
           <div className="flex items-center justify-center gap-3">
             <span className="h-px w-6 bg-gold-muted/40 block" />
-            <p className="ds-sub text-gold/70 tracking-[0.2em]">{c.venue.hall}</p>
+            <p
+              className="ds-sub text-gold/70"
+              style={{ letterSpacing: '0.15em', wordBreak: 'keep-all' }}
+            >
+              {c.venue.hall}
+            </p>
             <span className="h-px w-6 bg-gold-muted/40 block" />
           </div>
-          <p className="ds-cap text-gold-pale/35 tracking-[0.12em] leading-relaxed">{c.venue.address}</p>
+          <p className="ds-cap text-gold-pale/60 tracking-[0.12em] leading-relaxed">{c.venue.address}</p>
         </div>
 
         {/* 导航按钮 */}

@@ -55,12 +55,12 @@
   .ds-xxl  { font-size: clamp(3.5rem,  14vw, 6rem);     font-family: var(--font-display); letter-spacing: 0.1em; }
   .ds-xl   { font-size: clamp(2.2rem,  9vw,  4rem);     font-family: var(--font-display); letter-spacing: 0.08em; }
   .ds-lg   { font-size: clamp(1.6rem,  6vw,  2.8rem);   font-family: var(--font-display); letter-spacing: 0.06em; }
-  .ds-head { font-size: clamp(1.1rem,  4vw,  1.5rem);   font-family: var(--font-serif);   letter-spacing: 0.12em; font-weight: 300; }
-  .ds-sub  { font-size: clamp(0.85rem, 3vw,  1rem);     font-family: var(--font-serif);   letter-spacing: 0.2em;  font-weight: 300; }
-  .ds-body { font-size: clamp(0.9rem,  3.5vw, 1rem);    font-family: var(--font-serif);   letter-spacing: 0.06em; font-weight: 300; }
-  .ds-cap  { font-size: clamp(0.72rem, 2.5vw, 0.82rem); font-family: var(--font-serif);   letter-spacing: 0.16em; font-weight: 300; }
+  .ds-head { font-size: clamp(1.15rem, 4vw,  1.5rem);   font-family: var(--font-serif);   letter-spacing: 0.12em; font-weight: 400; }
+  .ds-sub  { font-size: clamp(0.95rem, 3.2vw, 1.1rem);  font-family: var(--font-serif);   letter-spacing: 0.2em;  font-weight: 400; }
+  .ds-body { font-size: clamp(1rem,    3.5vw, 1.1rem);  font-family: var(--font-serif);   letter-spacing: 0.06em; font-weight: 400; }
+  .ds-cap  { font-size: clamp(0.85rem, 2.8vw, 0.95rem); font-family: var(--font-serif);   letter-spacing: 0.16em; font-weight: 400; }
   .ds-en-lg { font-size: clamp(1rem, 4vw, 1.4rem);      font-family: var(--font-latin);   letter-spacing: 0.04em; }
-  .ds-en-sm { font-size: clamp(0.75rem, 2.5vw, 0.88rem); font-family: var(--font-latin);  letter-spacing: 0.1em; }
+  .ds-en-sm { font-size: clamp(0.8rem, 2.5vw, 0.92rem); font-family: var(--font-latin);  letter-spacing: 0.1em; }
 
   /* 金色细线 */
   .gold-rule {
