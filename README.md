@@ -54,7 +54,7 @@ npm run build
 npm run start
 ```
 
-部署到 Vercel:
+部署到 Vercel
 
 https://vercel.com/forestoceans-projects/wedding-thanksgiving-invite/ELDhHHmhXCeBEkqbKBeBJUwsTUPQ
 
