@@ -2,7 +2,9 @@
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, EffectCards } from 'swiper/modules';
-import 'swiper/swiper.css';
+import 'swiper/css';
+import 'swiper/css/effect-cards';
+import 'swiper/css/pagination';
 import { weddingConfig } from '@/config/wedding';
 
 const captions = ['初遇', '相知', '相守', '此生', '永恒', '我们', '同行'];
