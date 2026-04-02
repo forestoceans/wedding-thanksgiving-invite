@@ -1,8 +1,31 @@
 import type { Metadata, Viewport } from 'next';
+import { Ma_Shan_Zheng, Noto_Serif_SC, Cormorant_Garamond } from 'next/font/google';
 import './globals.css';
 import { weddingConfig } from '@/config/wedding';
 
 const c = weddingConfig;
+
+const maShangZheng = Ma_Shan_Zheng({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-display',
+  display: 'swap',
+});
+
+const notoSerifSC = Noto_Serif_SC({
+  weight: ['200', '300', '400', '500', '600', '700'],
+  subsets: ['latin'],
+  variable: '--font-serif',
+  display: 'swap',
+});
+
+const cormorant = Cormorant_Garamond({
+  weight: ['300', '400', '500'],
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
+  variable: '--font-latin',
+  display: 'swap',
+});
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -28,7 +51,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="zh">
+    <html lang="zh" className={`${maShangZheng.variable} ${notoSerifSC.variable} ${cormorant.variable}`}>
       <body>{children}</body>
     </html>
   );

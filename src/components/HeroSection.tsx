@@ -4,74 +4,92 @@ const c = weddingConfig;
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-svh flex flex-col items-center justify-center px-8 py-16 bg-gradient-to-b from-red-deep via-red-dark to-red-primary overflow-hidden">
-      {/* 装饰边框 */}
-      <div className="absolute inset-4 sm:inset-8 gold-border-frame rounded-sm pointer-events-none" />
+    <section className="relative min-h-svh flex flex-col items-center justify-center overflow-hidden bg-lacquer">
 
-      {/* 角落装饰 */}
-      <div className="absolute top-8 left-8 sm:top-12 sm:left-12 text-gold/40 text-xs tracking-[0.3em] writing-mode-vertical">
-        佳偶
+      {/* 背景径向暗晕 */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(ellipse 80% 70% at 50% 40%, rgba(120,18,18,0.55) 0%, transparent 70%), radial-gradient(ellipse 60% 50% at 50% 90%, rgba(30,6,6,0.6) 0%, transparent 60%)',
+        }}
+      />
+
+      {/* 两侧竖金线 */}
+      <div className="absolute top-0 bottom-0 left-10 sm:left-14 gold-rule-v opacity-20" />
+      <div className="absolute top-0 bottom-0 right-10 sm:right-14 gold-rule-v opacity-20" />
+
+      {/* 角落竖排小字 */}
+      <div
+        className="writing-vertical absolute top-16 left-12 sm:left-16 ds-cap text-gold-muted/50 tracking-[0.35em]"
+        aria-hidden
+      >
+        天作之合
       </div>
-      <div className="absolute top-8 right-8 sm:top-12 sm:right-12 text-gold/40 text-xs tracking-[0.3em] writing-mode-vertical">
-        禧事
+      <div
+        className="writing-vertical absolute top-16 right-12 sm:right-16 ds-cap text-gold-muted/50 tracking-[0.35em]"
+        aria-hidden
+      >
+        百年好合
       </div>
 
-      <div className="relative z-10 text-center space-y-6">
-        {/* 囍 */}
-        <div className="text-gold text-5xl sm:text-6xl tracking-[0.2em] text-shadow-gold font-semibold">
-          囍
-        </div>
+      {/* 主内容 */}
+      <div className="relative z-10 flex flex-col items-center text-center px-10 gap-0">
 
-        {/* 副标题 */}
-        <p className="text-gold-light/70 text-xs tracking-[0.5em] uppercase">
-          Love Story
+        {/* 顶部英文小标 */}
+        <p className="ds-en-sm text-gold-muted/70 tracking-[0.35em] uppercase anim-fade-in delay-100">
+          Wedding Banquet
         </p>
 
+        {/* 横线 */}
+        <div className="mt-4 mb-5 w-16 gold-rule anim-fade-in delay-200" />
+
         {/* 敬请光临 */}
-        <p className="text-cream/60 text-sm tracking-[0.4em]">
+        <p className="ds-sub text-gold-pale/60 tracking-[0.5em] anim-fade-up delay-200">
           敬 请 光 临
         </p>
 
+        {/* 囍 主视觉 */}
+        <div
+          className="ds-xxl text-gradient-gold gold-text-glow my-4 anim-scale-in delay-300"
+          style={{ lineHeight: 1 }}
+        >
+          囍
+        </div>
+
         {/* 主标题 */}
-        <h1 className="text-cream text-2xl sm:text-3xl font-light tracking-[0.5em] leading-relaxed">
+        <h1 className="ds-lg text-gold-pale tracking-[0.55em] leading-loose anim-fade-up delay-400">
           结婚答谢宴
         </h1>
 
-        {/* 分割线 */}
-        <div className="flex items-center justify-center gap-3">
-          <span className="block h-px w-16 bg-gold/40" />
-          <span className="text-gold text-sm">✦</span>
-          <span className="block h-px w-16 bg-gold/40" />
+        {/* 分隔线 */}
+        <div className="flex items-center gap-5 my-6 w-full max-w-[240px] anim-fade-in delay-500">
+          <hr className="gold-rule flex-1" />
+          <span className="text-gold text-xs" aria-hidden>✦</span>
+          <hr className="gold-rule flex-1" />
         </div>
 
         {/* 新人姓名 */}
-        <div className="space-y-3">
-          <p className="text-cream/50 text-xs tracking-[0.3em]">新郎 & 新娘</p>
-          <div className="flex items-center justify-center gap-4 sm:gap-6">
-            <span className="text-cream text-2xl sm:text-3xl font-light tracking-[0.3em]">
-              {c.groom}
-            </span>
-            <span className="text-gold text-xl">囍</span>
-            <span className="text-cream text-2xl sm:text-3xl font-light tracking-[0.3em]">
-              {c.bride}
-            </span>
-          </div>
+        <div className="flex items-center gap-5 sm:gap-7 anim-fade-up delay-500">
+          <span className="ds-lg text-gold-pale/95 tracking-[0.15em]">{c.groom}</span>
+          <span className="ds-head text-gold/70 tracking-[0.1em]" aria-hidden>&amp;</span>
+          <span className="ds-lg text-gold-pale/95 tracking-[0.15em]">{c.bride}</span>
         </div>
 
-        {/* 日期预览 */}
-        <div className="pt-4 space-y-1">
-          <p className="text-gold-light/80 text-base tracking-[0.3em]">
-            {c.dateSolar}
-          </p>
-          <p className="text-cream/40 text-xs tracking-wider">
-            {c.dateLunar}
-          </p>
+        {/* 日期 */}
+        <div className="mt-7 space-y-2 anim-fade-up delay-600">
+          <p className="ds-head text-gold/85 tracking-[0.28em]">{c.dateSolar}</p>
+          <p className="ds-cap text-gold-muted/55 tracking-[0.18em]">{c.dateLunar}</p>
         </div>
       </div>
 
-      {/* 底部滚动提示 */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-gold/30 text-xs tracking-widest animate-bounce">
-        ▾
+      {/* 底部导引 */}
+      <div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 anim-fade-in delay-800"
+        aria-hidden
+      >
+        <span className="ds-cap text-gold-muted/40 tracking-[0.3em]">向下</span>
+        <span className="text-gold-muted/30 text-base" style={{ animation: 'float 2s ease-in-out infinite' }}>↓</span>
       </div>
     </section>
   );

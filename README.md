@@ -54,4 +54,7 @@ npm run build
 npm run start
 ```
 
-推荐部署到 [Vercel](https://vercel.com)，连接 GitHub 仓库后自动发布。
+部署到 Vercel:
+
+https://vercel.com/forestoceans-projects/wedding-thanksgiving-invite/ELDhHHmhXCeBEkqbKBeBJUwsTUPQ
+

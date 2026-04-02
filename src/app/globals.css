@@ -1,62 +1,168 @@
-/* ─── Google Fonts（必须在最前面） ─── */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;300;400;500;600;700&display=swap');
-
 @import "tailwindcss";
 
-/* ─── 深红烫金 设计系统 ─── */
+/* ─── 设计系统 · 新中式奢雅 ─── */
 @theme {
-  --color-red-primary: #8B1A1A;
-  --color-red-dark: #5C0A0A;
-  --color-red-deep: #3D0808;
-  --color-gold: #C5A55A;
-  --color-gold-light: #D4B96E;
-  --color-gold-dim: #A68B3C;
-  --color-cream: #FDF6F0;
-  --color-cream-warm: #FAF0E6;
-  --color-text-title: #3D1C1C;
-  --color-text-body: #5A3A3A;
-  --color-text-muted: #8A6060;
+  --color-ink:          #1A1209;
+  --color-ink-mid:      #2E2016;
+  --color-ink-light:    #5C4A32;
+  --color-ink-ghost:    #9A8468;
 
-  --font-serif: 'Noto Serif SC', 'Songti SC', 'SimSun', 'STSong', serif;
+  --color-vermilion:    #C0392B;
+  --color-crimson:      #8B1A1A;
+  --color-lacquer:      #5C0E0E;
+
+  --color-gold:         #C9A84C;
+  --color-gold-bright:  #E8C96A;
+  --color-gold-muted:   #A6894A;
+  --color-gold-pale:    #EDE0C4;
+
+  --color-parchment:    #F8F2E8;
+  --color-silk:         #F2E9D8;
+  --color-warm-white:   #FDFAF4;
+
+  --font-display: 'Ma Shan Zheng', 'STKaiti', 'KaiTi', serif;
+  --font-serif:   'Noto Serif SC', 'Songti SC', 'STSong', 'SimSun', serif;
+  --font-latin:   'Cormorant Garamond', Georgia, serif;
 }
 
 /* ─── 全局基础 ─── */
-html {
-  scroll-behavior: smooth;
-  -webkit-tap-highlight-color: transparent;
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
 
-body {
-  font-family: var(--font-serif);
-  color: var(--color-text-body);
-  background: var(--color-red-dark);
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  body {
+    font-family: var(--font-serif);
+    color: var(--color-ink-mid);
+    background: var(--color-lacquer);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  input, textarea, select { font-family: var(--font-serif); }
+
+  ::selection { background: rgba(201, 168, 76, 0.22); color: var(--color-ink); }
 }
 
 /* ─── 自定义工具类 ─── */
-.gold-border-frame {
-  border: 1px solid var(--color-gold-dim);
-  box-shadow:
-    inset 0 0 0 3px var(--color-red-dark),
-    inset 0 0 0 4px var(--color-gold-dim);
+@layer utilities {
+
+  /* 字体尺寸层级 */
+  .ds-xxl  { font-size: clamp(3.5rem,  14vw, 6rem);     font-family: var(--font-display); letter-spacing: 0.1em; }
+  .ds-xl   { font-size: clamp(2.2rem,  9vw,  4rem);     font-family: var(--font-display); letter-spacing: 0.08em; }
+  .ds-lg   { font-size: clamp(1.6rem,  6vw,  2.8rem);   font-family: var(--font-display); letter-spacing: 0.06em; }
+  .ds-head { font-size: clamp(1.1rem,  4vw,  1.5rem);   font-family: var(--font-serif);   letter-spacing: 0.12em; font-weight: 300; }
+  .ds-sub  { font-size: clamp(0.85rem, 3vw,  1rem);     font-family: var(--font-serif);   letter-spacing: 0.2em;  font-weight: 300; }
+  .ds-body { font-size: clamp(0.9rem,  3.5vw, 1rem);    font-family: var(--font-serif);   letter-spacing: 0.06em; font-weight: 300; }
+  .ds-cap  { font-size: clamp(0.72rem, 2.5vw, 0.82rem); font-family: var(--font-serif);   letter-spacing: 0.16em; font-weight: 300; }
+  .ds-en-lg { font-size: clamp(1rem, 4vw, 1.4rem);      font-family: var(--font-latin);   letter-spacing: 0.04em; }
+  .ds-en-sm { font-size: clamp(0.75rem, 2.5vw, 0.88rem); font-family: var(--font-latin);  letter-spacing: 0.1em; }
+
+  /* 金色细线 */
+  .gold-rule {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg,
+      transparent 0%, var(--color-gold-muted) 20%,
+      var(--color-gold) 50%, var(--color-gold-muted) 80%, transparent 100%
+    );
+  }
+  .gold-rule-v {
+    width: 1px;
+    background: linear-gradient(180deg,
+      transparent 0%, var(--color-gold-muted) 20%,
+      var(--color-gold) 50%, var(--color-gold-muted) 80%, transparent 100%
+    );
+  }
+
+  /* 双边框 */
+  .double-border {
+    position: relative;
+    border: 1px solid var(--color-gold-muted);
+  }
+  .double-border::before {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    border: 1px solid rgba(201, 168, 76, 0.32);
+    pointer-events: none;
+  }
+
+  /* 竖排 */
+  .writing-vertical {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+  }
+
+  /* 金光效果 */
+  .gold-text-glow {
+    text-shadow: 0 0 30px rgba(201, 168, 76, 0.3), 0 1px 3px rgba(0,0,0,0.4);
+  }
+
+  /* 渐变金文字 */
+  .text-gradient-gold {
+    background: linear-gradient(135deg,
+      var(--color-gold-bright) 0%, var(--color-gold) 40%,
+      var(--color-gold-muted) 70%, var(--color-gold-bright) 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 4s linear infinite;
+  }
+
+  /* 入场动画 */
+  .anim-fade-up    { animation: wAnim-fadeUp   0.9s cubic-bezier(.22,1,.36,1) both; }
+  .anim-fade-in    { animation: wAnim-fadeIn   1.2s ease both; }
+  .anim-scale-in   { animation: wAnim-scaleIn  0.8s cubic-bezier(.22,1,.36,1) both; }
+
+  .delay-100 { animation-delay: 0.1s; }
+  .delay-200 { animation-delay: 0.2s; }
+  .delay-300 { animation-delay: 0.3s; }
+  .delay-400 { animation-delay: 0.4s; }
+  .delay-500 { animation-delay: 0.5s; }
+  .delay-600 { animation-delay: 0.6s; }
+  .delay-700 { animation-delay: 0.7s; }
+  .delay-800 { animation-delay: 0.8s; }
 }
 
-.text-shadow-gold {
-  text-shadow: 0 1px 2px rgba(197, 165, 90, 0.3);
+/* ─── @keyframes (全局作用域) ─── */
+@keyframes wAnim-fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes wAnim-fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes wAnim-scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-7px); }
 }
 
-/* Swiper 自定义样式 */
+/* ─── Swiper ─── */
 .swiper-pagination-bullet {
   background: var(--color-gold) !important;
-  opacity: 0.4 !important;
+  opacity: 0.35 !important;
+  width: 6px !important;
+  height: 6px !important;
 }
 .swiper-pagination-bullet-active {
   opacity: 1 !important;
-}
-
-/* 竖排文字 */
-.writing-mode-vertical {
-  writing-mode: vertical-rl;
-  text-orientation: upright;
+  width: 20px !important;
+  border-radius: 3px !important;
+  transition: width 0.3s ease !important;
 }
