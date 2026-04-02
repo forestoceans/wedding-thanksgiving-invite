@@ -8,7 +8,7 @@ export default function Footer() {
     <section className="bg-lacquer px-6 py-20 text-center">
       <div className="max-w-xs mx-auto space-y-10">
 
-        <p className="ds-lg text-gold-muted/45 tracking-[0.2em]" aria-hidden>囍</p>
+        <p className="ds-lg text-gold-muted/40 tracking-[0.2em]" aria-hidden>囍</p>
 
         <div className="space-y-3">
           <p className="ds-body text-gold-pale/80 tracking-[0.18em] leading-loose">感谢您的祝福与见证</p>

@@ -1,32 +1,46 @@
 'use client';
 
+import { useState } from 'react';
 import { weddingConfig } from '@/config/wedding';
 
 const c = weddingConfig;
 
-function handleNavigate() {
-  const isWeChat = /MicroMessenger/i.test(navigator.userAgent);
-  const keyword = encodeURIComponent(c.venue.name);
-  const addr = encodeURIComponent(c.venue.address);
+function openBaidu() {
+  const ua = navigator.userAgent;
+  const isIOS = /iPhone|iPad|iPod/i.test(ua);
+  const name = encodeURIComponent(c.venue.name);
+  const { lat, lng } = c.venue;
+  const scheme = isIOS
+    ? `baidumap://map/direction?destination=latlng:${lat},${lng}|name:${name}&mode=driving&coord_type=gcj02`
+    : `bdapp://map/direction?destination=latlng:${lat},${lng}|name:${name}&mode=driving&coord_type=gcj02`;
+  const web = `https://api.map.baidu.com/marker?location=${lat},${lng}&title=${name}&output=html&coord_type=gcj02`;
+  window.location.href = scheme;
+  setTimeout(() => { if (!document.hidden) window.open(web, '_blank'); }, 2000);
+}
 
-  if (isWeChat) {
-    // 微信内：腾讯地图 URI，微信会自动弹出"打开腾讯地图小程序"
-    window.location.href = `https://apis.map.qq.com/uri/v1/marker?marker=coord:${c.venue.lat},${c.venue.lng};title:${keyword};addr:${addr}&referer=wedding`;
-  } else {
-    // 普通浏览器：关键词搜索兜底
-    window.open(
-      `https://apis.map.qq.com/uri/v1/search?keyword=${keyword}&region=${encodeURIComponent('招远')}&referer=wedding`,
-      '_blank'
-    );
-  }
+function openGaode() {
+  const ua = navigator.userAgent;
+  const isIOS = /iPhone|iPad|iPod/i.test(ua);
+  const isWeChat = /MicroMessenger/i.test(ua);
+  const isMobile = /Android|iPhone|iPad|iPod/i.test(ua);
+  const name = encodeURIComponent(c.venue.name);
+  const { lat, lng } = c.venue;
+  const web = `https://uri.amap.com/marker?position=${lng},${lat}&name=${name}`;
+  if (!isMobile || isWeChat) { window.open(web, '_blank'); return; }
+  const scheme = isIOS
+    ? `iosamap://path?sourceApplication=wedding&dname=${name}&dlat=${lat}&dlong=${lng}&dev=0&t=0`
+    : `androidamap://route/plan/?sourceApplication=wedding&dname=${name}&dlat=${lat}&dlong=${lng}&dev=0&t=0`;
+  window.location.href = scheme;
+  setTimeout(() => { if (!document.hidden) window.open(web, '_blank'); }, 2000);
 }
 
 export default function VenueSection() {
+  const [showPicker, setShowPicker] = useState(false);
   return (
     <section className="bg-lacquer px-6 py-20 text-center">
       <div className="max-w-xs mx-auto space-y-10">
 
-        <p className="ds-sub text-gold-muted/65 tracking-[0.55em]">宴 会 地 点</p>
+        <p className="ds-sub text-gold-muted/80 tracking-[0.55em]">宴 会 地 点</p>
 
         <div className="w-10 mx-auto gold-rule" />
 
@@ -58,7 +72,7 @@ export default function VenueSection() {
 
         {/* 导航按钮 */}
         <button
-          onClick={handleNavigate}
+          onClick={() => setShowPicker(true)}
           className="inline-flex items-center gap-2.5 px-8 py-3.5 border border-gold/40 text-gold ds-sub tracking-[0.28em] transition-all hover:bg-gold/10 hover:border-gold/60 active:scale-95"
         >
           <svg className="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
@@ -68,6 +82,46 @@ export default function VenueSection() {
           导 航 前 往
         </button>
       </div>
+
+      {/* 地图选择弹层 */}
+      {showPicker && (
+        <div
+          className="fixed inset-0 z-50 flex items-end justify-center"
+          style={{ background: 'rgba(0,0,0,0.45)' }}
+          onClick={() => setShowPicker(false)}
+        >
+          <div
+            className="w-full max-w-sm mb-6 mx-4 rounded-xl overflow-hidden"
+            style={{ background: '#1a1209' }}
+            onClick={e => e.stopPropagation()}
+          >
+            <p className="ds-cap tracking-[0.4em] text-center pt-5 pb-4" style={{ color: 'rgba(184,150,74,0.5)' }}>选 择 地 图</p>
+            <div className="divide-y" style={{ borderColor: 'rgba(184,150,74,0.15)' }}>
+              <button
+                className="w-full py-4 ds-sub tracking-[0.2em] transition-all active:opacity-60"
+                style={{ color: 'rgb(184,150,74)' }}
+                onClick={() => { setShowPicker(false); openBaidu(); }}
+              >
+                百 度 地 图
+              </button>
+              <button
+                className="w-full py-4 ds-sub tracking-[0.2em] transition-all active:opacity-60"
+                style={{ color: 'rgb(184,150,74)' }}
+                onClick={() => { setShowPicker(false); openGaode(); }}
+              >
+                高 德 地 图
+              </button>
+              <button
+                className="w-full py-4 ds-cap tracking-[0.3em] transition-all active:opacity-60"
+                style={{ color: 'rgba(184,150,74,0.4)' }}
+                onClick={() => setShowPicker(false)}
+              >
+                取 消
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

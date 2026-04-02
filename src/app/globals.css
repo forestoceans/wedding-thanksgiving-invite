@@ -1,24 +1,32 @@
 @import "tailwindcss";
 
-/* ─── 设计系统 · 新中式奢雅 ─── */
+/* ─── 设计系统 · 新中式 · 云素白绫 ─── */
 @theme {
-  --color-ink:          #1A1209;
-  --color-ink-mid:      #2E2016;
-  --color-ink-light:    #5C4A32;
-  --color-ink-ghost:    #9A8468;
+  /* 墨色文字系 */
+  --color-ink:          #1C1410;
+  --color-ink-mid:      #332820;
+  --color-ink-light:    #5E4A38;
+  --color-ink-ghost:    #9A8878;
 
-  --color-vermilion:    #C0392B;
-  --color-crimson:      #8B1A1A;
-  --color-lacquer:      #5C0E0E;
+  /* 胭脂点缀系（淡玫瑰红，适合浅底喜庆） */
+  --color-rouge:        #C8595A;
+  --color-rouge-soft:   #D97A7B;
+  --color-rouge-pale:   #F2DEDE;
+  --color-rouge-blush:  #FAF0F0;
 
-  --color-gold:         #C9A84C;
-  --color-gold-bright:  #E8C96A;
-  --color-gold-muted:   #A6894A;
-  --color-gold-pale:    #EDE0C4;
+  /* 金色系 */
+  --color-gold:         #B8964A;
+  --color-gold-bright:  #D4B068;
+  --color-gold-muted:   #9A7D42;
+  --color-gold-pale:    #E8D5A8;
 
-  --color-parchment:    #F8F2E8;
-  --color-silk:         #F2E9D8;
-  --color-warm-white:   #FDFAF4;
+  /* 底色系（象牙白 · 宣纸白） */
+  --color-parchment:    #FAF7F2;
+  --color-silk:         #F5F0E8;
+  --color-warm-white:   #FDFCFA;
+  /* 深色底：保留原始漆红，用于交错深色区块 */
+  --color-lacquer:      #3D0A0A;
+  --color-lacquer-mid:  #2A0707;
 
   --font-display: 'Ma Shan Zheng', 'STKaiti', 'KaiTi', serif;
   --font-serif:   'Noto Serif SC', 'Songti SC', 'STSong', 'SimSun', serif;
@@ -78,6 +86,15 @@
       var(--color-gold) 50%, var(--color-gold-muted) 80%, transparent 100%
     );
   }
+  /* 胭脂细线 */
+  .rouge-rule {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg,
+      transparent 0%, var(--color-rouge-soft) 20%,
+      var(--color-rouge) 50%, var(--color-rouge-soft) 80%, transparent 100%
+    );
+  }
 
   /* 双边框 */
   .double-border {
@@ -88,7 +105,19 @@
     content: '';
     position: absolute;
     inset: 5px;
-    border: 1px solid rgba(201, 168, 76, 0.32);
+    border: 1px solid rgba(184, 150, 74, 0.28);
+    pointer-events: none;
+  }
+  /* 胭脂双边框 */
+  .double-border-rouge {
+    position: relative;
+    border: 1px solid rgba(200, 89, 90, 0.40);
+  }
+  .double-border-rouge::before {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    border: 1px solid rgba(200, 89, 90, 0.18);
     pointer-events: none;
   }
 
@@ -100,7 +129,12 @@
 
   /* 金光效果 */
   .gold-text-glow {
-    text-shadow: 0 0 30px rgba(201, 168, 76, 0.3), 0 1px 3px rgba(0,0,0,0.4);
+    text-shadow: 0 0 24px rgba(184, 150, 74, 0.25), 0 1px 2px rgba(0,0,0,0.12);
+  }
+
+  /* 胭脂红发光 */
+  .rouge-text-glow {
+    text-shadow: 0 0 28px rgba(200, 89, 90, 0.20), 0 1px 2px rgba(0,0,0,0.08);
   }
 
   /* 渐变金文字 */
@@ -114,6 +148,19 @@
     background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: shimmer 4s linear infinite;
+  }
+
+  /* 渐变胭脂红文字 */
+  .text-gradient-rouge {
+    background: linear-gradient(135deg,
+      var(--color-rouge-soft) 0%, var(--color-rouge) 40%,
+      #A83A3B 70%, var(--color-rouge-soft) 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 5s linear infinite;
   }
 
   /* 入场动画 */
@@ -153,7 +200,7 @@
   50%       { transform: translateY(-7px); }
 }
 
-/* ─── Swiper ─── */
+/* ─── Swiper 基础 ─── */
 .swiper-pagination-bullet {
   background: var(--color-gold) !important;
   opacity: 0.35 !important;
@@ -165,4 +212,22 @@
   width: 20px !important;
   border-radius: 3px !important;
   transition: width 0.3s ease !important;
+}
+
+/* ─── 照片叠牌轮播 ─── */
+.photo-cards-swiper {
+  overflow: visible !important;
+}
+.photo-cards-swiper .swiper-pagination {
+  bottom: 0 !important;
+}
+.photo-cards-swiper .swiper-pagination-bullet {
+  background: rgba(184,150,74,0.5) !important;
+}
+.photo-cards-swiper .swiper-pagination-bullet-active {
+  background: rgba(184,150,74,0.9) !important;
+}
+.photo-card-slide {
+  border-radius: 0 !important;
+  overflow: visible !important;
 }

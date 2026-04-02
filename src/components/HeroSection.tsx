@@ -11,7 +11,7 @@ export default function HeroSection() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse 80% 70% at 50% 40%, rgba(120,18,18,0.45) 0%, transparent 70%), radial-gradient(ellipse 60% 40% at 50% 95%, rgba(60,8,8,0.35) 0%, transparent 55%)',
+            'radial-gradient(ellipse 80% 70% at 50% 40%, rgba(120,18,18,0.55) 0%, transparent 70%), radial-gradient(ellipse 60% 40% at 50% 95%, rgba(60,8,8,0.4) 0%, transparent 55%)',
         }}
       />
 
@@ -83,14 +83,19 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* 底部导引 */}
-      <div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 anim-fade-in delay-800"
-        aria-hidden
+      {/* 底部导引 — 可点击，平滑滚动至下一节 */}
+      <a
+        href="#event-details"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 anim-fade-in delay-800 px-6 py-3 group"
+        aria-label="向下滚动查看详情"
       >
-        <span className="ds-cap text-gold-muted/40 tracking-[0.3em]">向下</span>
-        <span className="text-gold-muted/30 text-base" style={{ animation: 'float 2s ease-in-out infinite' }}>↓</span>
-      </div>
+        <span className="ds-cap text-gold-muted/55 tracking-[0.3em] transition-colors group-hover:text-gold-muted/80">向下</span>
+        <span
+          className="text-gold-muted/45 text-base transition-colors group-hover:text-gold-muted/70"
+          style={{ animation: 'float 2s ease-in-out infinite' }}
+          aria-hidden
+        >↓</span>
+      </a>
     </section>
   );
 }
