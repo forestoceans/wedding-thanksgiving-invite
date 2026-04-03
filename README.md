@@ -15,8 +15,8 @@
 ## 快速开始
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 访问 [http://localhost:3000](http://localhost:3000)
@@ -50,11 +50,22 @@ src/
 ## 部署
 
 ```bash
-npm run build
-npm run start
+pnpm build
+pnpm start
 ```
 
-部署到 Vercel
+部署到 Vercel：https://vercel.com/forestoceans-projects/wedding-thanksgiving-invite/ELDhHHmhXCeBEkqbKBeBJUwsTUPQ
 
-https://vercel.com/forestoceans-projects/wedding-thanksgiving-invite/ELDhHHmhXCeBEkqbKBeBJUwsTUPQ
+线上地址：https://linyangyang.site
 
+## 微信分享卡片
+
+分享到微信时会显示图文小卡片（Open Graph），配置项在 `src/config/wedding.ts` 的 `wechat` 对象中：
+
+| 字段 | 说明 |
+|------|------|
+| `shareTitle` | 卡片标题 |
+| `shareDesc` | 卡片摘要 |
+| `shareImgUrl` | 封面图绝对 URL（建议正方形 ≥300×300px） |
+
+当前封面图：`https://linyangyang.site/icons/weixin.jpg`（`public/icons/weixin.jpg`）

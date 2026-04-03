@@ -15,9 +15,15 @@ export default function RsvpForm() {
     if (!name.trim()) return;
     setState('submitting');
     try {
+      const res = await fetch('/api/rsvp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, count, message }),
+      });
+      if (!res.ok) throw new Error('send failed');
       setState('success');
     } catch {
-      setState('success');
+      setState('error');
     }
   }
 
@@ -28,6 +34,22 @@ export default function RsvpForm() {
           <p className="ds-lg tracking-[0.15em]" style={{ color: 'var(--color-rouge)', animation: 'float 3s ease-in-out infinite' }}>♥</p>
           <p className="ds-head tracking-[0.25em]" style={{ color: 'var(--color-ink)' }}>已收到您的回复</p>
           <p className="ds-body tracking-[0.12em]" style={{ color: 'var(--color-ink-ghost)' }}>感谢 {name}，期待与您相见</p>
+        </div>
+      </section>
+    );
+  }
+
+  if (state === 'error') {
+    return (
+      <section className="px-6 py-20 text-center" style={{ background: 'var(--color-parchment)' }}>
+        <div className="max-w-xs mx-auto space-y-6">
+          <p className="ds-head tracking-[0.25em]" style={{ color: 'var(--color-ink)' }}>提交失败</p>
+          <p className="ds-body tracking-[0.12em]" style={{ color: 'var(--color-ink-ghost)' }}>请稍后再试或联系新人</p>
+          <button
+            onClick={() => setState('idle')}
+            className="ds-cap tracking-[0.3em]"
+            style={{ color: 'var(--color-rouge)' }}
+          >重新填写</button>
         </div>
       </section>
     );
