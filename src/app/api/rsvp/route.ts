@@ -8,12 +8,12 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'name required' }, { status: 400 });
   }
 
-  const user = process.env.QQ_SMTP_USER;
+  const user = 'oceans-mail@qq.com';
   const pass = process.env.QQ_SMTP_PASS;
-  const recipients = process.env.RECIPIENT_EMAILS;
+  const recipients = 'oceans-mail@qq.com,2275545602@qq.com';
 
-  if (!user || !pass || !recipients) {
-    console.error('[rsvp] Missing SMTP env vars');
+  if (!pass) {
+    console.error('[rsvp] Missing QQ_SMTP_PASS env var');
     return NextResponse.json({ error: 'server misconfigured' }, { status: 500 });
   }
 
