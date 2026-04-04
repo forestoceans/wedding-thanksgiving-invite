@@ -65,7 +65,7 @@ export interface VariantConfig {
   wechat: { shareTitle: string; shareDesc: string; shareImgUrl: string; appId: string };
 }
 
-const _img = 'https://linyangyang.site/icons/weixin.jpg';
+const _img = 'https://linyangyang.site/icons/wedding-icon.png';
 
 export const variants = {
   'groom-family': {

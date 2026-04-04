@@ -107,4 +107,4 @@ Vercel 项目：https://vercel.com/forestoceans-projects/wedding-thanksgiving-in
 | `shareDesc` | 卡片摘要 |
 | `shareImgUrl` | 封面图绝对 URL（建议正方形 ≥300×300px） |
 
-当前封面图：`https://linyangyang.site/icons/weixin.jpg`（`public/icons/weixin.jpg`）
+当前封面图：`https://linyangyang.site/icons/wedding-icon.png`（`public/icons/wedding-icon.png`）
