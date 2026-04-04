@@ -26,14 +26,14 @@ export async function POST(req: Request) {
 
   const text = [
     `姓名：${name}`,
-    `出席人数：${count} 位`,
+    `出席人数：${count === 0 ? '0（无法出席，仅送祝福）' : `${count} 位`}`,
     `祝福留言：${message || '（无）'}`,
   ].join('\n');
 
   await transporter.sendMail({
     from: `"婚礼回执" <${user}>`,
     to: recipients,
-    subject: `[婚礼回执] ${name} 确认出席`,
+    subject: `[婚礼回执] ${name} ${count === 0 ? '送上祝福（无法出席）' : '确认出席'}`,
     text,
   });
 

@@ -28,8 +28,8 @@ export default function RsvpForm() {
       <section className="px-6 py-20 text-center" style={{ background: 'var(--color-parchment)' }}>
         <div className="max-w-xs mx-auto space-y-6">
           <p className="ds-lg tracking-[0.15em]" style={{ color: 'var(--color-rouge)', animation: 'float 3s ease-in-out infinite' }}>♥</p>
-          <p className="ds-head tracking-[0.25em]" style={{ color: 'var(--color-ink)' }}>已收到您的回复</p>
-          <p className="ds-body tracking-[0.12em]" style={{ color: 'var(--color-ink-ghost)' }}>感谢 {name}，期待与您相见</p>
+          <p className="ds-head tracking-[0.25em]" style={{ color: 'var(--color-ink)' }}>{count === 0 ? '已收到您的祝福' : '已收到您的回复'}</p>
+          <p className="ds-body tracking-[0.12em]" style={{ color: 'var(--color-ink-ghost)' }}>{count === 0 ? `感谢 ${name}，您的心意我们已收到` : `感谢 ${name}，期待与您相见`}</p>
         </div>
       </section>
     );
@@ -92,7 +92,7 @@ export default function RsvpForm() {
             <div className="flex items-center gap-6 py-3" style={{ borderBottom: '1px solid rgba(184,150,74,0.35)' }}>
               <button
                 type="button"
-                onClick={() => setCount(Math.max(1, count - 1))}
+                onClick={() => setCount(Math.max(0, count - 1))}
                 className="w-7 h-7 flex items-center justify-center text-lg leading-none transition-all active:scale-90"
                 style={{ border: '1px solid rgba(200,89,90,0.30)', color: 'var(--color-rouge)' }}
               >−</button>
@@ -103,7 +103,7 @@ export default function RsvpForm() {
                 className="w-7 h-7 flex items-center justify-center text-lg leading-none transition-all active:scale-90"
                 style={{ border: '1px solid rgba(200,89,90,0.30)', color: 'var(--color-rouge)' }}
               >+</button>
-              <span className="ds-cap tracking-[0.1em]" style={{ color: 'var(--color-ink-ghost)' }}>位</span>
+              <span className="ds-cap tracking-[0.1em]" style={{ color: 'var(--color-ink-ghost)' }}>{count === 0 ? '无法出席' : '位'}</span>
             </div>
           </div>
 
@@ -137,7 +137,7 @@ export default function RsvpForm() {
                 color: 'var(--color-rouge)',
               }}
             >
-              {state === 'submitting' ? '提 交 中 …' : '确 认 出 席'}
+              {state === 'submitting' ? '提 交 中 …' : count === 0 ? '送 上 祝 福' : '确 认 出 席'}
             </button>
           </div>
         </form>
