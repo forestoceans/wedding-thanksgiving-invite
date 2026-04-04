@@ -30,8 +30,6 @@ export const weddingConfig = {
   // ─── 照片轮播 ───
   photos: [
     '/imgs/1.jpg',
-    '/imgs/2.jpg',
-    '/imgs/3.jpg',
     '/imgs/4.jpg',
     '/imgs/5.jpg',
     '/imgs/6.jpg',
@@ -42,7 +40,7 @@ export const weddingConfig = {
   wechat: {
     shareTitle: '林洋洋 & 王文靖 · 结婚答谢宴邀请',
     shareDesc: '诚邀您于2026年5月2日莅临招远市生态园大酒店，共赴答谢宴',
-    shareImgUrl: 'https://linyangyang.site/icons/weixin.jpg', // 分享卡片图标 URL（300x300 jpg/png）
+    shareImgUrl: 'https://linyangyang.site/icons/wedding-icon.png', // 分享卡片图标 URL（300x300 jpg/png）
     // JS-SDK 配置（需要后端签名，暂留空）
     appId: '',
   },

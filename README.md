@@ -77,7 +77,7 @@ src/
 │   └── wedding.ts            # 全局配置 + 多版本数据
 public/
 ├── imgs/                     # 照片轮播图
-└── icons/weixin.jpg          # 微信分享卡片封面图
+└── icons/wedding-icon.png          # 微信分享卡片封面图
 ```
 
 ## 环境变量
