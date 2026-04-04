@@ -2,10 +2,12 @@
 
 import { useState } from 'react';
 import { weddingConfig } from '@/config/wedding';
+import type { VariantConfig } from '@/config/wedding';
 
-const c = weddingConfig;
+export default function EventDetails({ variant }: { variant?: VariantConfig }) {
+  const c = variant ?? weddingConfig;
 
-function openBaidu() {
+  function openBaidu() {
   const ua = navigator.userAgent;
   const isIOS = /iPhone|iPad|iPod/i.test(ua);
   const name = encodeURIComponent(c.venue.name);
@@ -34,7 +36,6 @@ function openGaode() {
   setTimeout(() => { if (!document.hidden) window.open(web, '_blank'); }, 2000);
 }
 
-export default function EventDetails() {
   const [showPicker, setShowPicker] = useState(false);
   return (
     <section id="event-details" className="px-6 py-20 text-center relative overflow-hidden" style={{ background: 'var(--color-silk)' }}>

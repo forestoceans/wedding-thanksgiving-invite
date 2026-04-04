@@ -1,8 +1,9 @@
 import { weddingConfig } from '@/config/wedding';
+import type { VariantConfig } from '@/config/wedding';
 
-const c = weddingConfig;
-
-export default function HeroSection() {
+export default function HeroSection({ variant }: { variant?: VariantConfig }) {
+  const c = variant ?? weddingConfig;
+  const { groom, bride } = weddingConfig;
   return (
     <section className="relative min-h-svh flex flex-col items-center justify-center overflow-hidden bg-lacquer">
 
@@ -71,9 +72,9 @@ export default function HeroSection() {
 
         {/* 新人姓名 */}
         <div className="flex items-center gap-5 sm:gap-7 anim-fade-up delay-500">
-          <span className="ds-lg text-gold-pale/95 tracking-[0.15em]">{c.groom}</span>
+          <span className="ds-lg text-gold-pale/95 tracking-[0.15em]">{groom}</span>
           <span className="ds-head text-gold/70 tracking-[0.1em]" aria-hidden>&amp;</span>
-          <span className="ds-lg text-gold-pale/95 tracking-[0.15em]">{c.bride}</span>
+          <span className="ds-lg text-gold-pale/95 tracking-[0.15em]">{bride}</span>
         </div>
 
         {/* 日期 */}

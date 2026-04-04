@@ -1,9 +1,9 @@
 import { weddingConfig } from '@/config/wedding';
+import type { VariantConfig } from '@/config/wedding';
 import Divider from './Divider';
 
-const c = weddingConfig;
-
-export default function Footer() {
+export default function Footer({ variant }: { variant?: VariantConfig }) {
+  const c = variant ?? weddingConfig;
   return (
     <section className="bg-lacquer px-6 py-20 text-center">
       <div className="max-w-xs mx-auto space-y-10">

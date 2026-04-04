@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import { weddingConfig } from '@/config/wedding';
+import type { VariantConfig } from '@/config/wedding';
 
 declare global {
   interface Window {
@@ -14,15 +15,17 @@ declare global {
   }
 }
 
-export default function WechatShare() {
+export default function WechatShare({ variant }: { variant?: VariantConfig }) {
+  const { shareTitle, shareDesc, shareImgUrl, appId } =
+    variant?.wechat ?? weddingConfig.wechat;
+
   useEffect(() => {
     // 检测是否在微信浏览器中
     const ua = navigator.userAgent.toLowerCase();
     const isWechat = /micromessenger/i.test(ua);
     if (!isWechat) return;
 
-    const { wechat } = weddingConfig;
-    if (!wechat.appId) return;
+    if (!appId) return;
 
     // 加载微信 JS-SDK
     const script = document.createElement('script');
@@ -34,7 +37,7 @@ export default function WechatShare() {
       // 实际使用时需要从后端获取 signature 等参数
       window.wx.config({
         debug: false,
-        appId: wechat.appId,
+        appId,
         timestamp: 0,
         nonceStr: '',
         signature: '',
@@ -46,10 +49,10 @@ export default function WechatShare() {
 
       window.wx.ready(() => {
         const shareData = {
-          title: wechat.shareTitle,
-          desc: wechat.shareDesc,
+          title: shareTitle,
+          desc: shareDesc,
           link: window.location.href,
-          imgUrl: wechat.shareImgUrl,
+          imgUrl: shareImgUrl,
         };
 
         // 分享给朋友
@@ -63,7 +66,7 @@ export default function WechatShare() {
     return () => {
       script.remove();
     };
-  }, []);
+  }, [shareTitle, shareDesc, shareImgUrl, appId]);
 
   return null;
 }
