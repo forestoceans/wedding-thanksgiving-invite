@@ -5,26 +5,32 @@ import { weddingConfig } from '@/config/wedding';
 
 const c = weddingConfig;
 
+// 马善政楷体 — 标题装饰用，单字重
 const maShangZheng = Ma_Shan_Zheng({
   weight: '400',
   subsets: ['latin'],
   variable: '--font-display',
   display: 'swap',
+  preload: true,
 });
 
+// 思源宋体 — 正文用，只保留必要字重（减少加载体积）
 const notoSerifSC = Noto_Serif_SC({
-  weight: ['200', '300', '400', '500', '600', '700'],
+  weight: ['400', '600'], // 只保留 regular + semibold
   subsets: ['latin'],
   variable: '--font-serif',
   display: 'swap',
+  preload: true,
 });
 
+// Cormorant Garamond — 英文装饰用
 const cormorant = Cormorant_Garamond({
-  weight: ['300', '400', '500'],
+  weight: ['300', '400'], // 只保留 light + regular
   style: ['normal', 'italic'],
   subsets: ['latin'],
   variable: '--font-latin',
   display: 'swap',
+  preload: true,
 });
 
 export const viewport: Viewport = {
