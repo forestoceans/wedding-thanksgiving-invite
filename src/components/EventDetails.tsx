@@ -38,7 +38,7 @@ function openGaode() {
 
   const [showPicker, setShowPicker] = useState(false);
   return (
-    <section id="event-details" className="px-6 py-20 text-center relative overflow-hidden" style={{ background: 'var(--color-silk)' }}>
+    <section id="event-details" className="px-6 py-20 text-center relative overflow-hidden" style={{ background: '#F5F0E8' }}>
       {/* 淡晕染 */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -123,7 +123,7 @@ function openGaode() {
           >
             <div
               className="w-full max-w-sm mb-6 mx-4 rounded-xl overflow-hidden"
-              style={{ background: 'var(--color-silk)' }}
+              style={{ background: '#F5F0E8' }}
               onClick={e => e.stopPropagation()}
             >
               <p className="ds-cap tracking-[0.4em] text-center pt-5 pb-4" style={{ color: 'var(--color-ink-ghost)' }}>选 择 地 图</p>

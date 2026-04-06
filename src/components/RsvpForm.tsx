@@ -25,7 +25,7 @@ export default function RsvpForm() {
 
   if (state === 'success') {
     return (
-      <section className="px-6 py-20 text-center" style={{ background: 'var(--color-parchment)' }}>
+      <section className="px-6 py-20 text-center" style={{ background: '#FAF7F2' }}>
         <div className="max-w-xs mx-auto space-y-6">
           <p className="ds-lg tracking-[0.15em]" style={{ color: 'var(--color-rouge)', animation: 'float 3s ease-in-out infinite' }}>♥</p>
           <p className="ds-head tracking-[0.25em]" style={{ color: 'var(--color-ink)' }}>{count === 0 ? '已收到您的祝福' : '已收到您的回复'}</p>
@@ -37,7 +37,7 @@ export default function RsvpForm() {
 
   if (state === 'error') {
     return (
-      <section className="px-6 py-20 text-center" style={{ background: 'var(--color-parchment)' }}>
+      <section className="px-6 py-20 text-center" style={{ background: '#FAF7F2' }}>
         <div className="max-w-xs mx-auto space-y-6">
           <p className="ds-head tracking-[0.25em]" style={{ color: 'var(--color-ink)' }}>提交失败</p>
           <p className="ds-body tracking-[0.12em]" style={{ color: 'var(--color-ink-ghost)' }}>请稍后再试或联系新人</p>
@@ -52,7 +52,7 @@ export default function RsvpForm() {
   }
 
   return (
-    <section className="px-6 py-20 relative overflow-hidden" style={{ background: 'var(--color-parchment)' }}>
+    <section className="px-6 py-20 relative overflow-hidden" style={{ background: '#FAF7F2' }}>
       {/* 淡胭脂晕染 */}
       <div
         className="absolute inset-0 pointer-events-none"

@@ -43,7 +43,8 @@
   body {
     font-family: var(--font-serif);
     color: var(--color-ink-mid);
-    background: radial-gradient(ellipse at 40% 20%, #7A2010 0%, #4A0E08 45%, #250807 100%);
+    background-color: #4A0E08; /* 兜底纯色，确保旧版 WebView 不透明 */
+    background-image: radial-gradient(ellipse at 40% 20%, #7A2010 0%, #4A0E08 45%, #250807 100%);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
