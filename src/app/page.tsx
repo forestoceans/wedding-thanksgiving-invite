@@ -6,7 +6,7 @@ const bride  = variants['bride'];
 
 export default function Home() {
   return (
-    <main className="min-h-svh bg-lacquer flex flex-col items-center justify-center relative overflow-hidden px-6 py-16">
+    <main className="min-h-svh flex flex-col items-center justify-center relative overflow-hidden px-6 py-16">
 
       {/* 两侧竖金线 */}
       <div className="absolute top-0 bottom-0 left-10 sm:left-14 gold-rule-v opacity-15" />

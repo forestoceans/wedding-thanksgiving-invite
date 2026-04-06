@@ -24,9 +24,9 @@
   --color-parchment:    #FAF7F2;
   --color-silk:         #F5F0E8;
   --color-warm-white:   #FDFCFA;
-  /* 深色底：保留原始漆红，用于交错深色区块 */
-  --color-lacquer:      #3D0A0A;
-  --color-lacquer-mid:  #2A0707;
+  /* 深色底：暖漆丹砂，用于交错深色区块 */
+  --color-lacquer:      #4A0E08;
+  --color-lacquer-mid:  #250807;
 
   --font-display: 'Ma Shan Zheng', 'STKaiti', 'KaiTi', serif;
   --font-serif:   'Noto Serif SC', 'Songti SC', 'STSong', 'SimSun', serif;
@@ -43,7 +43,7 @@
   body {
     font-family: var(--font-serif);
     color: var(--color-ink-mid);
-    background: var(--color-lacquer);
+    background: radial-gradient(ellipse at 40% 20%, #7A2010 0%, #4A0E08 45%, #250807 100%);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
