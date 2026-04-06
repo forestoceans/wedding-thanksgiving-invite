@@ -40,9 +40,7 @@ export const weddingConfig = {
   wechat: {
     shareTitle: '林洋洋 & 王文靖 · 结婚答谢宴邀请',
     shareDesc: '诚邀您于2026年5月2日莅临招远市生态园大酒店，共赴答谢宴',
-    shareImgUrl: 'https://linyangyang.site/icons/wedding-icon.png', // 分享卡片图标 URL（300x300 jpg/png）
-    // JS-SDK 配置（需要后端签名，暂留空）
-    appId: '',
+    shareImgUrl: 'https://linyangyang.site/icons/wedding-icon.png',
   },
 
 
@@ -60,7 +58,7 @@ export interface VariantConfig {
   time: string;
   timeShort: string;
   venue: { name: string; hall: string; address: string; lat: number; lng: number };
-  wechat: { shareTitle: string; shareDesc: string; shareImgUrl: string; appId: string };
+  wechat: { shareTitle: string; shareDesc: string; shareImgUrl: string };
 }
 
 const _img = 'https://linyangyang.site/icons/wedding-icon.png';
@@ -77,7 +75,7 @@ export const variants = {
              address: '山东省烟台市招远市生态园大酒店', lat: 37.3556, lng: 120.4028 },
     wechat: { shareTitle: '林洋洋 & 王文靖 · 结婚答谢宴邀请',
               shareDesc:  '诚邀您于2026年5月2日莅临招远市生态园大酒店，共赴答谢宴',
-              shareImgUrl: _img, appId: '' },
+              shareImgUrl: _img },
   },
   'bride-family': {
     parents:   '王少伟 · 孙凤丽',
@@ -90,7 +88,7 @@ export const variants = {
              address: '山东省潍坊市潍坊金庆国际酒店', lat: 36.715, lng: 119.105 },
     wechat: { shareTitle: '王文靖 & 林洋洋 · 结婚答谢宴邀请',
               shareDesc:  '诚邀您于2026年5月4日莅临潍坊金庆国际酒店，共赴答谢宴',
-              shareImgUrl: _img, appId: '' },
+              shareImgUrl: _img },
   },
   'groom': {
     parents:   '林洋洋 · 王文靖',
@@ -103,7 +101,7 @@ export const variants = {
              address: '山东省烟台市招远市生态园大酒店', lat: 37.3556, lng: 120.4028 },
     wechat: { shareTitle: '我们结婚啦！诚邀您莅临答谢宴',
               shareDesc:  '林洋洋 & 王文靖 诚挚邀请您参加我们的婚礼答谢宴',
-              shareImgUrl: _img, appId: '' },
+              shareImgUrl: _img },
   },
   'bride': {
     parents:   '林洋洋 · 王文靖',
@@ -116,7 +114,7 @@ export const variants = {
              address: '山东省潍坊市潍坊金庆国际酒店', lat: 36.715, lng: 119.105 },
     wechat: { shareTitle: '我们结婚啦！诚邀您莅临答谢宴',
               shareDesc:  '林洋洋 & 王文靖 诚挚邀请您参加我们的婚礼答谢宴',
-              shareImgUrl: _img, appId: '' },
+              shareImgUrl: _img },
   },
 } satisfies Record<string, VariantConfig>;
 

@@ -4,69 +4,21 @@ import { useEffect } from 'react';
 import { weddingConfig } from '@/config/wedding';
 import type { VariantConfig } from '@/config/wedding';
 
-declare global {
-  interface Window {
-    wx?: {
-      config: (cfg: Record<string, unknown>) => void;
-      ready: (fn: () => void) => void;
-      updateAppMessageShareData: (data: Record<string, unknown>) => void;
-      updateTimelineShareData: (data: Record<string, unknown>) => void;
-    };
-  }
-}
-
+/**
+ * 微信分享组件
+ *
+ * 不使用 JS-SDK（需备案域名），仅依赖 Open Graph meta 标签实现分享卡片。
+ * Open Graph 配置在 layout.tsx 的 metadata 中。
+ */
 export default function WechatShare({ variant }: { variant?: VariantConfig }) {
-  const { shareTitle, shareDesc, shareImgUrl, appId } =
+  const { shareTitle, shareDesc, shareImgUrl } =
     variant?.wechat ?? weddingConfig.wechat;
 
+  // 预加载分享图片，提升微信加载速度
   useEffect(() => {
-    // 检测是否在微信浏览器中
-    const ua = navigator.userAgent.toLowerCase();
-    const isWechat = /micromessenger/i.test(ua);
-    if (!isWechat) return;
-
-    if (!appId) return;
-
-    // 加载微信 JS-SDK
-    const script = document.createElement('script');
-    script.src = 'https://res.wx.qq.com/open/js/jweixin-1.6.0.js';
-    script.onload = () => {
-      if (!window.wx) return;
-
-      // wx.config 需要后端签名，这里预留接口
-      // 实际使用时需要从后端获取 signature 等参数
-      window.wx.config({
-        debug: false,
-        appId,
-        timestamp: 0,
-        nonceStr: '',
-        signature: '',
-        jsApiList: [
-          'updateAppMessageShareData',
-          'updateTimelineShareData',
-        ],
-      });
-
-      window.wx.ready(() => {
-        const shareData = {
-          title: shareTitle,
-          desc: shareDesc,
-          link: window.location.href,
-          imgUrl: shareImgUrl,
-        };
-
-        // 分享给朋友
-        window.wx?.updateAppMessageShareData(shareData);
-        // 分享到朋友圈
-        window.wx?.updateTimelineShareData(shareData);
-      });
-    };
-    document.head.appendChild(script);
-
-    return () => {
-      script.remove();
-    };
-  }, [shareTitle, shareDesc, shareImgUrl, appId]);
+    const img = new Image();
+    img.src = shareImgUrl;
+  }, [shareImgUrl]);
 
   return null;
 }

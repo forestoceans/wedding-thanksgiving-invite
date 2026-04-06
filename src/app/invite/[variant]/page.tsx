@@ -6,7 +6,6 @@ import EventDetails from '@/components/EventDetails';
 import PhotoCarousel from '@/components/PhotoCarousel';
 import RsvpForm from '@/components/RsvpForm';
 import Footer from '@/components/Footer';
-import WechatShare from '@/components/WechatShare';
 import ScrollReveal from '@/components/ScrollReveal';
 
 type Props = { params: Promise<{ variant: string }> };
@@ -37,7 +36,6 @@ export default async function InvitePage({ params }: Props) {
 
   return (
     <main className="min-h-screen">
-      <WechatShare variant={v} />
       <HeroSection variant={v} />
       <ScrollReveal><EventDetails variant={v} /></ScrollReveal>
       <ScrollReveal><PhotoCarousel /></ScrollReveal>
