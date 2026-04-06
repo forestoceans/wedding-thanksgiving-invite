@@ -40,7 +40,7 @@ export const weddingConfig = {
   wechat: {
     shareTitle: '林洋洋 & 王文靖 · 结婚答谢宴邀请',
     shareDesc: '诚邀您于2026年5月2日莅临招远市生态园大酒店，共赴答谢宴',
-    shareImgUrl: 'https://linyangyang.site/icons/wedding-icon.png',
+    shareImgUrl: 'https://linyangyang.site/icons/shuangxi.png',
   },
 
 
@@ -61,7 +61,7 @@ export interface VariantConfig {
   wechat: { shareTitle: string; shareDesc: string; shareImgUrl: string };
 }
 
-const _img = 'https://linyangyang.site/icons/wedding-icon.png';
+const _img = 'https://linyangyang.site/icons/shuangxi.png';
 
 export const variants = {
   'groom-family': {

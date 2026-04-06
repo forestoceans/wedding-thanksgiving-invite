@@ -77,7 +77,7 @@ src/
 │   └── wedding.ts            # 全局配置 + 多版本数据
 public/
 ├── imgs/                     # 照片轮播图
-└── icons/wedding-icon.png          # 微信分享卡片封面图
+└── icons/shuangxi.png          # 微信分享卡片封面图（囍字）
 ```
 
 ## 环境变量
@@ -107,4 +107,4 @@ Vercel 项目：https://vercel.com/forestoceans-projects/wedding-thanksgiving-in
 | `shareDesc` | 卡片摘要 |
 | `shareImgUrl` | 封面图绝对 URL（建议正方形 ≥300×300px） |
 
-当前封面图：`https://linyangyang.site/icons/wedding-icon.png`（`public/icons/wedding-icon.png`）
+当前封面图：`https://linyangyang.site/icons/shuangxi.png`（`public/icons/shuangxi.png`）
