@@ -90,9 +90,8 @@ export default function HeroSection({ variant }: { variant?: VariantConfig }) {
         className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 anim-fade-in delay-800 px-6 py-3 group"
         aria-label="向下滚动查看详情"
       >
-        <span className="ds-cap text-gold-muted/55 tracking-[0.3em] transition-colors group-hover:text-gold-muted/80">向下</span>
         <span
-          className="text-gold-muted/45 text-base transition-colors group-hover:text-gold-muted/70"
+          className="text-gold-muted/45 text-lg transition-colors group-hover:text-gold-muted/70"
           style={{ animation: 'float 2s ease-in-out infinite' }}
           aria-hidden
         >↓</span>
