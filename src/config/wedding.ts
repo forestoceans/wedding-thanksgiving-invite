@@ -30,10 +30,11 @@ export const weddingConfig = {
   // ─── 照片轮播 ───
   photos: [
     '/imgs/1.jpg',
+    '/imgs/2.jpg',
+    '/imgs/3.jpg',
     '/imgs/4.jpg',
     '/imgs/5.jpg',
     '/imgs/6.jpg',
-    '/imgs/7.jpg',
   ],
 
   // ─── 微信分享 ───

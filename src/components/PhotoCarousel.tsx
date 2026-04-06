@@ -5,7 +5,7 @@ import { Autoplay, Pagination, EffectCards } from 'swiper/modules';
 import 'swiper/swiper-bundle.css';
 import { weddingConfig } from '@/config/wedding';
 
-const captions = ['初遇', '相知', '相守', '此生', '永恒', '我们', '同行'];
+const captions = ['相守', '此生', '永恒', '我们', '同行'];
 
 export default function PhotoCarousel() {
   const photos = weddingConfig.photos;
