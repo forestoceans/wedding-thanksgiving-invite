@@ -5,7 +5,6 @@ import { Autoplay, Pagination, EffectCards } from 'swiper/modules';
 import 'swiper/swiper-bundle.css';
 import { weddingConfig } from '@/config/wedding';
 
-const captions = ['相守', '此生', '永恒', '我们', '同行'];
 
 export default function PhotoCarousel() {
   const photos = weddingConfig.photos;
@@ -59,7 +58,8 @@ export default function PhotoCarousel() {
           <Swiper
             modules={[Autoplay, Pagination, EffectCards]}
             effect="cards"
-            cardsEffect={{ slideShadows: false, perSlideOffset: 10, perSlideRotate: 4 }}
+            cardsEffect={{ slideShadows: false, perSlideOffset: 8, perSlideRotate: 3 }}
+            speed={700}
             autoplay={{ delay: 3200, disableOnInteraction: false }}
             pagination={{ clickable: true }}
             loop
@@ -74,7 +74,7 @@ export default function PhotoCarousel() {
                   className="relative w-full"
                   style={{
                     background: '#fdfcfa',
-                    padding: '10px 10px 32px',
+                    padding: '10px',
                     boxShadow: '0 20px 60px rgba(0,0,0,0.55), 0 4px 16px rgba(0,0,0,0.35)',
                   }}
                 >
@@ -87,29 +87,7 @@ export default function PhotoCarousel() {
                       loading="lazy"
                     />
                   </div>
-                  {/* 宝丽来底部白边：序号 + 中文标题 */}
-                  <div className="flex items-center justify-between mt-2 px-1">
-                    <span
-                      style={{
-                        fontFamily: 'var(--font-latin)',
-                        fontSize: '0.7rem',
-                        color: 'rgba(92,74,56,0.35)',
-                        letterSpacing: '0.08em',
-                      }}
-                    >
-                      {String(i + 1).padStart(2, '0')} / {String(photos.length).padStart(2, '0')}
-                    </span>
-                    <span
-                      style={{
-                        fontFamily: 'var(--font-display)',
-                        fontSize: '0.78rem',
-                        color: 'rgba(92,74,56,0.55)',
-                        letterSpacing: '0.25em',
-                      }}
-                    >
-                      {captions[i % captions.length]}
-                    </span>
-                  </div>
+
                 </div>
               </SwiperSlide>
             ))}

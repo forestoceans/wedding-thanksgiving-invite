@@ -1,3 +1,5 @@
+'use client';
+
 import { weddingConfig } from '@/config/wedding';
 import type { VariantConfig } from '@/config/wedding';
 
@@ -72,9 +74,9 @@ export default function HeroSection({ variant }: { variant?: VariantConfig }) {
 
         {/* 新人姓名 */}
         <div className="flex items-center gap-5 sm:gap-7 anim-fade-up delay-500">
-          <span className="ds-lg text-gold-pale/95 tracking-[0.15em]">{groom}</span>
+          <span className="ds-lg text-gold-pale/95 tracking-[0.15em]">{variant?.brideFirst ? bride : groom}</span>
           <span className="ds-head text-gold/70 tracking-[0.1em]" aria-hidden>&amp;</span>
-          <span className="ds-lg text-gold-pale/95 tracking-[0.15em]">{bride}</span>
+          <span className="ds-lg text-gold-pale/95 tracking-[0.15em]">{variant?.brideFirst ? groom : bride}</span>
         </div>
 
         {/* 日期 */}
@@ -87,6 +89,10 @@ export default function HeroSection({ variant }: { variant?: VariantConfig }) {
       {/* 底部导引 — 可点击，平滑滚动至下一节 */}
       <a
         href="#event-details"
+        onClick={(e) => {
+          e.preventDefault();
+          document.getElementById('event-details')?.scrollIntoView({ behavior: 'smooth' });
+        }}
         className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 anim-fade-in delay-800 px-6 py-3 group"
         aria-label="向下滚动查看详情"
       >

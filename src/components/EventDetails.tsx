@@ -158,6 +158,10 @@ function openGaode() {
         <div className="pt-4 flex justify-center">
           <a
             href="#photo-carousel"
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById('photo-carousel')?.scrollIntoView({ behavior: 'smooth' });
+            }}
             className="flex flex-col items-center gap-1.5 px-6 py-3 group"
             aria-label="查看甜蜜瞬间照片"
           >
