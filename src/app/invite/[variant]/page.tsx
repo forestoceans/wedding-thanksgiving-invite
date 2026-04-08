@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const v = variants[variant as keyof typeof variants];
   if (!v) return {};
   return {
-    title: v.brideFirst
+    title: ('brideFirst' in v && v.brideFirst)
       ? `${weddingConfig.bride} & ${weddingConfig.groom} · 结婚答谢宴`
       : `${weddingConfig.groom} & ${weddingConfig.bride} · 结婚答谢宴`,
     description: v.wechat.shareDesc,
