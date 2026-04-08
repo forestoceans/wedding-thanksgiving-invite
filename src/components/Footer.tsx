@@ -18,8 +18,8 @@ export default function Footer({ variant }: { variant?: VariantConfig }) {
         <Divider />
 
         <div className="space-y-3">
-          <p className="ds-cap text-gold-muted/70 tracking-[0.5em]">敬 邀</p>
           <p className="ds-head text-gold/90 tracking-[0.35em]">{c.host}</p>
+          <p className="ds-cap text-gold-muted/70 tracking-[0.5em]">敬 邀</p>
         </div>
 
         <div className="pt-4">
