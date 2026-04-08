@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/forestoceans/wedding-thanksgiving-invite#readme",
   "dependencies": {
+    "@neondatabase/serverless": "^1.0.2",
     "@types/nodemailer": "^7.0.11",
     "framer-motion": "^12.38.0",
     "next": "^16.2.2",

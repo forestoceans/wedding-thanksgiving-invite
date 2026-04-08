@@ -4,7 +4,7 @@ import { useState, type FormEvent } from 'react';
 
 type FormState = 'idle' | 'submitting' | 'success' | 'error';
 
-export default function RsvpForm() {
+export default function RsvpForm({ variant }: { variant: string }) {
   const [name, setName] = useState('');
   const [count, setCount] = useState(1);
   const [message, setMessage] = useState('');
@@ -17,7 +17,7 @@ export default function RsvpForm() {
     fetch('/api/rsvp', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, count, message }),
+      body: JSON.stringify({ name, count, message, variant }),
     }).catch(() => {});
     await new Promise(r => setTimeout(r, 600));
     setState('success');

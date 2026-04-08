@@ -1,13 +1,51 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { neon } from '@neondatabase/serverless';
+
+function getDb() {
+  const url = process.env.POSTGRES_URL;
+  if (!url) throw new Error('POSTGRES_URL not set');
+  return neon(url);
+}
+
+async function ensureTable() {
+  const sql = getDb();
+  await sql`
+    CREATE TABLE IF NOT EXISTS rsvps (
+      id           SERIAL PRIMARY KEY,
+      name         TEXT NOT NULL,
+      count        INTEGER NOT NULL DEFAULT 0,
+      message      TEXT,
+      venue        TEXT NOT NULL,
+      variant      TEXT NOT NULL,
+      submitted_at TIMESTAMPTZ DEFAULT NOW()
+    )
+  `;
+}
 
 export async function POST(req: Request) {
-  const { name, count, message } = await req.json();
+  const { name, count, message, variant } = await req.json();
 
   if (!name?.trim()) {
     return NextResponse.json({ error: 'name required' }, { status: 400 });
   }
 
+  const venue = typeof variant === 'string' && variant.startsWith('bride') ? '潍坊' : '招远';
+  const safeVariant = typeof variant === 'string' ? variant : 'unknown';
+
+  // 存库（失败不阻断邮件）
+  try {
+    await ensureTable();
+    const sql = getDb();
+    await sql`
+      INSERT INTO rsvps (name, count, message, venue, variant)
+      VALUES (${name.trim()}, ${count ?? 0}, ${message || null}, ${venue}, ${safeVariant})
+    `;
+  } catch (err) {
+    console.error('[rsvp] DB insert failed:', err);
+  }
+
+  // 发邮件
   const user = 'oceans-mail@qq.com';
   const pass = process.env.QQ_SMTP_PASS;
   const recipients = 'oceans-mail@qq.com,2275545602@qq.com';
@@ -25,6 +63,7 @@ export async function POST(req: Request) {
   });
 
   const text = [
+    `场地：${venue}场`,
     `姓名：${name}`,
     `出席人数：${count === 0 ? '0（无法出席，仅送祝福）' : `${count} 位`}`,
     `祝福留言：${message || '（无）'}`,
@@ -33,7 +72,7 @@ export async function POST(req: Request) {
   await transporter.sendMail({
     from: `"婚礼回执" <${user}>`,
     to: recipients,
-    subject: `[婚礼回执] ${name} ${count === 0 ? '送上祝福（无法出席）' : '确认出席'}`,
+    subject: `[婚礼回执·${venue}] ${name} ${count === 0 ? '送上祝福（无法出席）' : '确认出席'}`,
     text,
   });
 

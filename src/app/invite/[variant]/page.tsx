@@ -41,7 +41,7 @@ export default async function InvitePage({ params }: Props) {
       <HeroSection variant={v} />
       <ScrollReveal><EventDetails variant={v} /></ScrollReveal>
       <ScrollReveal><PhotoCarousel /></ScrollReveal>
-      <ScrollReveal><RsvpForm /></ScrollReveal>
+      <ScrollReveal><RsvpForm variant={variant} /></ScrollReveal>
       <ScrollReveal><Footer variant={v} /></ScrollReveal>
     </main>
   );
