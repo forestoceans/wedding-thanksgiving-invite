@@ -1,42 +1,11 @@
 'use client';
 
-import { useState } from 'react';
 import { weddingConfig } from '@/config/wedding';
 import type { VariantConfig } from '@/config/wedding';
 
 export default function EventDetails({ variant }: { variant?: VariantConfig }) {
   const c = variant ?? weddingConfig;
 
-  function openBaidu() {
-  const ua = navigator.userAgent;
-  const isIOS = /iPhone|iPad|iPod/i.test(ua);
-  const name = encodeURIComponent(c.venue.name);
-  const { lat, lng } = c.venue;
-  const scheme = isIOS
-    ? `baidumap://map/direction?destination=latlng:${lat},${lng}|name:${name}&mode=driving&coord_type=gcj02`
-    : `bdapp://map/direction?destination=latlng:${lat},${lng}|name:${name}&mode=driving&coord_type=gcj02`;
-  const web = `https://api.map.baidu.com/marker?location=${lat},${lng}&title=${name}&output=html&coord_type=gcj02`;
-  window.location.href = scheme;
-  setTimeout(() => { if (!document.hidden) window.open(web, '_blank'); }, 2000);
-}
-
-function openGaode() {
-  const ua = navigator.userAgent;
-  const isIOS = /iPhone|iPad|iPod/i.test(ua);
-  const isWeChat = /MicroMessenger/i.test(ua);
-  const isMobile = /Android|iPhone|iPad|iPod/i.test(ua);
-  const name = encodeURIComponent(c.venue.name);
-  const { lat, lng } = c.venue;
-  const web = `https://uri.amap.com/marker?position=${lng},${lat}&name=${name}`;
-  if (!isMobile || isWeChat) { window.open(web, '_blank'); return; }
-  const scheme = isIOS
-    ? `iosamap://path?sourceApplication=wedding&dname=${name}&dlat=${lat}&dlong=${lng}&dev=0&t=0`
-    : `androidamap://route/plan/?sourceApplication=wedding&dname=${name}&dlat=${lat}&dlong=${lng}&dev=0&t=0`;
-  window.location.href = scheme;
-  setTimeout(() => { if (!document.hidden) window.open(web, '_blank'); }, 2000);
-}
-
-  const [showPicker, setShowPicker] = useState(false);
   return (
     <section id="event-details" className="px-6 py-20 text-center relative overflow-hidden" style={{ background: '#F5F0E8' }}>
       {/* 淡晕染 */}
@@ -98,61 +67,6 @@ function openGaode() {
           </div>
           <p className="ds-cap tracking-[0.1em] leading-relaxed" style={{ color: 'var(--color-ink-ghost)' }}>{c.venue.address}</p>
         </div>
-
-        {/* 导航按钮 */}
-        {/* <button
-          onClick={() => setShowPicker(true)}
-          className="inline-flex items-center gap-2.5 px-8 py-3.5 ds-sub tracking-[0.28em] transition-all active:scale-95"
-          style={{ border: '1px solid rgba(200,89,90,0.35)', color: 'var(--color-rouge)' }}
-          onMouseEnter={e => (e.currentTarget.style.background = 'rgba(200,89,90,0.05)')}
-          onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
-        >
-          <svg className="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-          </svg>
-          导 航 前 往
-        </button> */}
-
-        {/* 地图选择弹层 */}
-        {showPicker && (
-          <div
-            className="fixed inset-0 z-50 flex items-end justify-center"
-            style={{ background: 'rgba(0,0,0,0.45)' }}
-            onClick={() => setShowPicker(false)}
-          >
-            <div
-              className="w-full max-w-sm mb-6 mx-4 rounded-xl overflow-hidden"
-              style={{ background: '#F5F0E8' }}
-              onClick={e => e.stopPropagation()}
-            >
-              <p className="ds-cap tracking-[0.4em] text-center pt-5 pb-4" style={{ color: 'var(--color-ink-ghost)' }}>选 择 地 图</p>
-              <div className="divide-y" style={{ borderColor: 'rgba(200,89,90,0.15)' }}>
-                <button
-                  className="w-full py-4 ds-sub tracking-[0.2em] transition-all active:opacity-60"
-                  style={{ color: 'var(--color-rouge)' }}
-                  onClick={() => { setShowPicker(false); openBaidu(); }}
-                >
-                  百 度 地 图
-                </button>
-                <button
-                  className="w-full py-4 ds-sub tracking-[0.2em] transition-all active:opacity-60"
-                  style={{ color: 'var(--color-rouge)' }}
-                  onClick={() => { setShowPicker(false); openGaode(); }}
-                >
-                  高 德 地 图
-                </button>
-                <button
-                  className="w-full py-4 ds-cap tracking-[0.3em] transition-all active:opacity-60"
-                  style={{ color: 'var(--color-ink-ghost)' }}
-                  onClick={() => setShowPicker(false)}
-                >
-                  取 消
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
 
         {/* 下滑导引 → 甜蜜瞬间 */}
         <div className="pt-4 flex justify-center">
