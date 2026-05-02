@@ -100,7 +100,7 @@ function openGaode() {
         </div>
 
         {/* 导航按钮 */}
-        <button
+        {/* <button
           onClick={() => setShowPicker(true)}
           className="inline-flex items-center gap-2.5 px-8 py-3.5 ds-sub tracking-[0.28em] transition-all active:scale-95"
           style={{ border: '1px solid rgba(200,89,90,0.35)', color: 'var(--color-rouge)' }}
@@ -112,7 +112,7 @@ function openGaode() {
             <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
           </svg>
           导 航 前 往
-        </button>
+        </button> */}
 
         {/* 地图选择弹层 */}
         {showPicker && (
