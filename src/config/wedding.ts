@@ -81,7 +81,7 @@ const _brideBase = {
   time:      '中午十一时三十八分',
   timeShort: '11:38 午宴',
   venue: { name: '潍坊金庆国际酒店', hall: '5楼西子厅',
-           address: '奎文区北宫东街199号', lat: 36.715, lng: 119.105 },
+           address: '奎文区北宫东街1999号', lat: 36.715, lng: 119.105 },
   brideFirst: true as const,
 };
 
